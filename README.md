@@ -64,6 +64,17 @@ every patch with CLIP, and builds an anomaly heatmap showing where the defect
 is. It prints the pixel-level AUROC against the MVTec ground-truth mask and
 saves `outputs/patch_localize.png` (original | heatmap overlay | ground truth).
 
+## Run milestone 4
+
+```
+python src/distill.py --data-dir data --epochs 10
+```
+
+It distills the CLIP pipeline into a tiny student CNN: the teacher scores
+patches, the student learns to mimic those scores (MSE loss), then we report
+student-vs-teacher correlation, FPS speedup, and a student heatmap with pixel
+AUROC. Saves `outputs/student.pt` and `outputs/student_heatmap.png`.
+
 ## Run milestone 3
 
 ```
